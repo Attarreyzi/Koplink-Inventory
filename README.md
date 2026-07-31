@@ -18,9 +18,14 @@ Aplikasi dapat diakses secara langsung melalui tautan berikut: [https://koplink.
 - Sistem autentikasi admin
 
 ## Stack Teknologi
-- Laravel
+**Backend & Database:**
+- Laravel (PHP Framework)
 - MySQL
-- Blade Templating
+
+**Frontend & Interaksi:**
+- Tailwind CSS
+- Blade Templating (HTML)
+- JavaScript & SweetAlert2
 
 ## Instalasi Lokal
 Untuk menjalankan proyek ini di perangkat lokal, ikuti langkah-langkah berikut:
