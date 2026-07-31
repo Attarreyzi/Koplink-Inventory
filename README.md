@@ -25,7 +25,7 @@ Aplikasi dapat diakses secara langsung melalui tautan berikut: [https://koplink.
 **Frontend & Interaksi:**
 - Tailwind CSS
 - Blade Templating (HTML)
-- JavaScript & SweetAlert2
+- JavaScript
 
 ## Instalasi Lokal
 Untuk menjalankan proyek ini di perangkat lokal, ikuti langkah-langkah berikut:
