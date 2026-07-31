@@ -1,33 +1,34 @@
 # Koplink Inventory
 
-Koplink Inventory adalah aplikasi web sederhana untuk manajemen stok barang dan transaksi yang dibangun menggunakan Laravel. 
+Koplink Inventory adalah aplikasi berbasis web yang dirancang untuk mengelola stok barang dan mencatat transaksi harian. Aplikasi ini dibangun menggunakan framework Laravel dan basis data MySQL.
 
-Fokus utama aplikasi ini adalah untuk mencatat barang masuk, barang keluar, dan membuat laporan stok secara otomatis agar lebih gampang dipantau.
+Fokus utama dari sistem ini adalah untuk mempermudah pencatatan barang masuk, barang keluar, serta menyajikan laporan stok secara terstruktur agar ketersediaan barang dapat dipantau dengan mudah.
 
 ## Live Demo
-Aplikasi bisa dicoba langsung lewat link ini:  
+Aplikasi dapat diakses secara langsung melalui tautan berikut:
 [https://koplink.infinityfree.me](https://koplink.infinityfree.me)
 
-## Fitur
-- Kelola Data Produk & Kategori
-- Catat Transaksi Stok (Masuk & Keluar)
-- Laporan Riwayat Stok
-- Dashboard Admin
-- Sistem Login
+## Fitur Utama
+- Manajemen data produk dan kategori
+- Pencatatan transaksi stok (masuk dan keluar)
+- Laporan riwayat pergerakan stok otomatis
+- Dashboard statistik untuk memantau data
+- Sistem autentikasi admin
 
-## Tech Stack
+## Stack Teknologi
 - Laravel
 - MySQL
 - Blade Templating
 
-## Cara Setup di Lokal
-Kalo mau jalanin project ini di komputer sendiri:
-1. Clone repo ini
-2. Buka terminal, jalanin `composer install`
-3. Copy `.env.example` jadi `.env` trus sesuaikan config database-nya
-4. Jalanin `php artisan key:generate`
-5. Jalanin `php artisan migrate` buat bikin tabelnya
-6. Terakhir, `php artisan serve`
+## Instalasi Lokal
+Untuk menjalankan proyek ini di perangkat lokal, silakan ikuti langkah-langkah berikut:
+
+1. Salin (clone) repositori ini: `git clone https://github.com/Attarreyzi/Koplink-Inventory.git`
+2. Buka terminal dan jalankan: `composer install`
+3. Gandakan file `.env.example` menjadi `.env` dan sesuaikan pengaturan database Anda.
+4. Jalankan perintah: `php artisan key:generate`
+5. Lakukan migrasi database: `php artisan migrate`
+6. Jalankan server lokal: `php artisan serve`
 
 ---
-Dibuat oleh [Attarreyzi](https://github.com/Attarreyzi)
+Dikembangkan oleh [Attarreyzi](https://github.com/Attarreyzi)
