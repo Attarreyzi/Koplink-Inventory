@@ -6,7 +6,7 @@ Fokus utama dari sistem ini adalah untuk mempermudah pencatatan barang masuk, ba
 
 ## Live Demo & Preview
 Aplikasi dapat diakses secara langsung melalui tautan berikut: [https://koplink.infinityfree.me](https://koplink.infinityfree.me) 
-*(Catatan: Portal ini tertutup khusus untuk Admin)*
+*(Portal ini tertutup khusus untuk Admin)*
 
 ▶️ **[Klik di sini untuk menonton Video Demo Aplikasi](https://drive.google.com/file/d/19Tg1hbOGqGVX6CK0ieuMk2qnSsHFp2-1/view?usp=drivesdk)**
 
