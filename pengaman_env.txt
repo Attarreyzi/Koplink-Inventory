@@ -1,0 +1,5 @@
+# Blokir akses publik ke file .env dan file sensitif lainnya
+<FilesMatch "^\.env|composer\.json|package\.json|phpunit\.xml|\.git.*">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
