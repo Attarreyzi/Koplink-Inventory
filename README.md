@@ -4,8 +4,11 @@ Koplink Inventory adalah aplikasi berbasis web yang dirancang untuk mengelola st
 
 Fokus utama dari sistem ini adalah untuk mempermudah pencatatan barang masuk, barang keluar, serta menyajikan laporan stok secara terstruktur agar ketersediaan barang dapat dipantau dengan mudah.
 
-## Live Demo
-Aplikasi dapat diakses secara langsung melalui tautan berikut: [https://koplink.infinityfree.me](https://koplink.infinityfree.me)
+## Live Demo & Preview
+Aplikasi dapat diakses secara langsung melalui tautan berikut: [https://koplink.infinityfree.me](https://koplink.infinityfree.me) 
+*(Catatan: Portal ini tertutup khusus untuk Admin)*
+
+▶️ **[Klik di sini untuk menonton Video Demo Aplikasi](https://drive.google.com/file/d/19Tg1hbOGqGVX6CK0ieuMk2qnSsHFp2-1/view?usp=drivesdk)**
 
 ## Fitur Utama
 - Manajemen data produk dan kategori
