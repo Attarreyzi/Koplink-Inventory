@@ -37,5 +37,4 @@ Untuk menjalankan proyek ini di perangkat lokal, ikuti langkah-langkah berikut:
 5. Lakukan migrasi database: `php artisan migrate`
 6. Jalankan server lokal: `php artisan serve`
 
----
 Dikembangkan oleh [Attarreyzi](https://github.com/Attarreyzi)
