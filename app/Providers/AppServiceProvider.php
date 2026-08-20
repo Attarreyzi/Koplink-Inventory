@@ -6,17 +6,13 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+    // Registrasi service aplikasi
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
+    // Inisialisasi awal aplikasi (paksa HTTPS di server production)
     public function boot(): void
     {
         if (config('app.env') === 'production') {
@@ -24,3 +20,4 @@ class AppServiceProvider extends ServiceProvider
         }
     }
 }
+

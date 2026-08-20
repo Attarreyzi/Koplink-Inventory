@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // Buat tabel kategori produk
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
@@ -20,3 +21,4 @@ return new class extends Migration
         Schema::dropIfExists('categories');
     }
 };
+

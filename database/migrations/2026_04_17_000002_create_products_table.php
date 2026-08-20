@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // Buat tabel produk inventaris
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
@@ -26,3 +27,4 @@ return new class extends Migration
         Schema::dropIfExists('products');
     }
 };
+

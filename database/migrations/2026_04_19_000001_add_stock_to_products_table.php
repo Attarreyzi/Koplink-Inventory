@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // Tambahkan kolom jumlah stok ke tabel produk
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
@@ -20,3 +21,4 @@ return new class extends Migration
         });
     }
 };
+

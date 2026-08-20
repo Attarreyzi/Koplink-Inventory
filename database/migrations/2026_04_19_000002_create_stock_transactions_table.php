@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    // Buat tabel log riwayat mutasi stok (masuk/keluar)
     public function up(): void
     {
         Schema::create('stock_transactions', function (Blueprint $table) {
@@ -24,3 +25,4 @@ return new class extends Migration
         Schema::dropIfExists('stock_transactions');
     }
 };
+
