@@ -9,22 +9,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
+// =======================================================
+// Controller Manajemen Produk Admin - Koplink Inventory
+// =======================================================
 class AdminProductController extends Controller
 {
+    // Tampilkan daftar semua produk beserta kategorinya
     public function index()
     {
         $products = Product::with('category')->get();
         return view('admin.products.index', compact('products'));
     }
 
+    // Form tambah produk baru
     public function create()
     {
         $categories = Category::all();
         return view('admin.products.create', compact('categories'));
     }
 
+    // Simpan data produk baru ke database
     public function store(Request $request)
     {
+        // Validasi input produk
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255|unique:products,name',
@@ -41,6 +48,7 @@ class AdminProductController extends Controller
             'purchase_price.required' => 'Harga modal wajib diisi.',
         ]);
 
+        // Upload gambar jika ada file yang dikirim
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . rand(1000, 9999) . '.' . $file->getClientOriginalExtension();
@@ -52,6 +60,7 @@ class AdminProductController extends Controller
             $validated['image'] = 'public/uploads/products/' . $filename;
         }
 
+        // Simpan produk & catat transaksi stok awal
         DB::transaction(function () use ($validated) {
             $product = Product::create($validated);
 
@@ -68,12 +77,14 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
+    // Form edit data produk
     public function edit(Product $product)
     {
         $categories = Category::all();
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
+    // Update data produk
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
@@ -91,6 +102,7 @@ class AdminProductController extends Controller
             'purchase_price.required' => 'Harga modal wajib diisi.',
         ]);
 
+        // Jika upload gambar baru, hapus gambar lama dulu
         if ($request->hasFile('image')) {
             if ($product->image && file_exists(base_path($product->image))) {
                 @unlink(base_path($product->image));
@@ -110,6 +122,7 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
+    // Hapus produk & file fotonya
     public function destroy(Product $product)
     {
         if ($product->image && file_exists(base_path($product->image))) {
@@ -119,3 +132,4 @@ class AdminProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus.');
     }
 }
+

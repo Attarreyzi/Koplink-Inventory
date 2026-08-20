@@ -10,7 +10,7 @@ if (!file_exists($envFile)) {
     $content = file_get_contents($envFile);
     
     // Ganti DB_DATABASE
-    $content = preg_replace('/DB_DATABASE=.*/', 'DB_DATABASE=if0_42347781_koplink_db', $content);
+    $content = preg_replace('/DB_DATABASE=.*/', 'DB_DATABASE=if0_42347781_parfy_imk', $content);
     
     // Ganti DB_USERNAME
     $content = preg_replace('/DB_USERNAME=.*/', 'DB_USERNAME=if0_42347781', $content);
@@ -24,7 +24,7 @@ if (!file_exists($envFile)) {
     // Simpan perubahan
     file_put_contents($envFile, $content);
     
-    echo "<h3 style='color:green;'>Berhasil memperbarui file .env! Nama database sudah diganti menjadi if0_42347781_koplink_db</h3>";
+    echo "<h3 style='color:green;'>Berhasil memperbarui file .env! Nama database sudah diganti menjadi if0_42347781_parfy_imk</h3>";
     
     // Bersihkan cache config lagi untuk berjaga-jaga
     $cacheFile = __DIR__ . '/../bootstrap/cache/config.php';

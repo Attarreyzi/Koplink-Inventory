@@ -7,8 +7,12 @@ use App\Models\Product;
 use App\Models\StockTransaction;
 use Illuminate\Http\Request;
 
+// =======================================================
+// Endpoint API Laporan - Valuasi & Mutasi Stok
+// =======================================================
 class ReportApiController extends Controller
 {
+    // Replikasi data laporan inventaris & statistik stok
     public function index(Request $request)
     {
         $products = Product::all();
@@ -18,6 +22,7 @@ class ReportApiController extends Controller
 
         $totalStock = $products->sum('stock');
 
+        // Filter berdasarkan tanggal jika dikirimkan
         $query = StockTransaction::query();
         if ($request->has('start_date') && $request->has('end_date') && $request->start_date && $request->end_date) {
             $query->whereBetween('created_at', [$request->start_date . ' 00:00:00', $request->end_date . ' 23:59:59']);
@@ -40,3 +45,4 @@ class ReportApiController extends Controller
         ]);
     }
 }
+

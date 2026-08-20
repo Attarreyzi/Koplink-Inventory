@@ -9,32 +9,31 @@ use App\Http\Controllers\Api\ReportApiController;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Routes - Koplink Inventory Web
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
 */
 
+// Check user session Sanctum
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Group Endpoint API Admin
 Route::prefix('admin')->group(function () {
+    // Ringkasan Dashboard
     Route::get('/dashboard', [DashboardApiController::class, 'index']);
     
-    // Categories
+    // Manajemen Kategori Produk
     Route::apiResource('categories', CategoryApiController::class);
     
-    // Products
+    // Manajemen Produk
     Route::apiResource('products', ProductApiController::class);
     
-    // Stock Transactions
+    // Transaksi Stok & Riwayat Mutasi
     Route::get('/stock/history', [ProductApiController::class, 'stockHistory']);
     Route::post('/stock/{product}', [ProductApiController::class, 'stockTransaction']);
     
-    // Reports
+    // Laporan & Statistik Inventaris
     Route::get('/reports', [ReportApiController::class, 'index']);
 });
+

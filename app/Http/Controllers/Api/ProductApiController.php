@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\StockTransaction;
 
+// =======================================================
+// Endpoint API Produk - Koplink Inventory
+// =======================================================
 class ProductApiController extends Controller
 {
+    // Get list produk
     public function index()
     {
         $products = Product::with('category')->get();
@@ -20,6 +24,7 @@ class ProductApiController extends Controller
         ]);
     }
 
+    // Tambah produk via API
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -46,6 +51,7 @@ class ProductApiController extends Controller
         ]);
     }
 
+    // Detail produk
     public function show(Product $product)
     {
         $product->load('category');
@@ -55,12 +61,10 @@ class ProductApiController extends Controller
         ]);
     }
 
+    // Update produk via API
     public function update(Request $request, Product $product)
     {
-        // For processing multipart/form-data via PUT/PATCH, 
-        // Laravel needs a POST request with _method=PUT to handle files properly in PHP.
-        // It's a common gotcha but we'll manage it the Laravel way.
-
+        // Catatan: sertakan _method=PUT jika mengirim multipart form-data
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
@@ -85,6 +89,7 @@ class ProductApiController extends Controller
         ]);
     }
 
+    // Hapus produk
     public function destroy(Product $product)
     {
         if ($product->image) {
@@ -98,7 +103,7 @@ class ProductApiController extends Controller
         ]);
     }
 
-    // Stock Transactions
+    // Riwayat transaksi stok
     public function stockHistory()
     {
         $transactions = StockTransaction::with('product')->latest()->get();
@@ -108,6 +113,7 @@ class ProductApiController extends Controller
         ]);
     }
 
+    // Transaksi stok (masuk/keluar) via API
     public function stockTransaction(Request $request, Product $product)
     {
         $validated = $request->validate([
@@ -149,3 +155,4 @@ class ProductApiController extends Controller
         }
     }
 }
+

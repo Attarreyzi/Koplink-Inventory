@@ -1,16 +1,22 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+// =======================================================
+// Controller Otentikasi Admin - Login & Logout
+// =======================================================
 class AdminAuthController extends Controller
 {
+    // Tampilkan halaman form login
     public function showLogin()
     {
         return view('auth.login');
     }
 
+    // Proses otentikasi akun admin
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -28,6 +34,7 @@ class AdminAuthController extends Controller
         ])->onlyInput('email');
     }
 
+    // Logout session admin
     public function logout(Request $request)
     {
         Auth::logout();
@@ -36,3 +43,4 @@ class AdminAuthController extends Controller
         return redirect('/login');
     }
 }
+

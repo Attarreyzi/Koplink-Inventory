@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+// =======================================================
+// Endpoint API Kategori - Koplink Inventory
+// =======================================================
 class CategoryApiController extends Controller
 {
+    // Daftar semua kategori
     public function index()
     {
         return response()->json([
@@ -16,6 +20,7 @@ class CategoryApiController extends Controller
         ]);
     }
 
+    // Tambah kategori baru
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -31,6 +36,7 @@ class CategoryApiController extends Controller
         ]);
     }
 
+    // Update nama kategori
     public function update(Request $request, Category $category)
     {
         $validated = $request->validate([
@@ -46,9 +52,10 @@ class CategoryApiController extends Controller
         ]);
     }
 
+    // Hapus kategori jika tidak terkait dengan produk
     public function destroy(Category $category)
     {
-        // Check if there are products using this category
+        // Cek jika kategori masih dipakai produk
         if ($category->products()->count() > 0) {
             return response()->json([
                 'status' => 'error',
@@ -64,3 +71,4 @@ class CategoryApiController extends Controller
         ]);
     }
 }
+

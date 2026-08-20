@@ -171,7 +171,7 @@
                 <p style="margin: 5px 0; font-size: 16px; font-weight: bold; color: black;">Rp {{ number_format($totalProfit, 0, ',', '.') }}</p>
             </div>
             <div style="border: 1px solid #ddd; padding: 10px; flex: 1; text-align: center;">
-                <p style="margin: 0; font-size: 12px; color: #666;">ITEM TERJUAL</p>
+                <p style="margin: 0; font-size: 12px; color: #666;">STOK KELUAR</p>
                 <p style="margin: 5px 0; font-size: 16px; font-weight: bold;">{{ $stockOutCount }}</p>
             </div>
             <div style="border: 1px solid #ddd; padding: 10px; flex: 1; text-align: center;">
