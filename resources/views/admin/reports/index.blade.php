@@ -3,6 +3,7 @@
 @section('title', 'Laporan Inventory')
 
 @section('content')
+{{-- Form Filter Periode Tanggal Laporan --}}
 <div class="card filter-form">
     <form action="{{ route('admin.reports.index') }}" method="GET">
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
@@ -23,7 +24,7 @@
 </div>
 
 <div id="report-to-print">
-    <!-- Halaman Utama (Tampilan di Web - Tetap Dark Mode) -->
+    {{-- Card Ringkasan Statistik Laporan (Omset, Keuntungan, Stok Out & In) --}}
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
         <div class="card" style="margin-bottom: 0;">
             <div style="color: #94a3b8; font-size: 0.9rem; text-transform: uppercase;">Total Omset</div>
@@ -70,6 +71,7 @@
         }
     </style>
 
+    {{-- Tabel Transaksi Penjualan Periode Ini --}}
     <div class="card">
         <h2 style="margin-top: 0; margin-bottom: 15px;">Daftar Semua Transaksi</h2>
         <div class="table-responsive-scroll">
@@ -140,7 +142,7 @@
 
 </div>
 
-<!-- Template Khusus PDF (Hidden, White Theme) -->
+{{-- Template Khusus PDF (Tema Cetak Putih Bersih) --}}
 <div id="pdf-template" style="display: none;">
     <div id="pdf-content-wrapper" style="width: 700px; box-sizing: border-box; color: black; background: white; font-family: Arial, sans-serif;">
         <style>
@@ -226,6 +228,7 @@
 </div>
 
 <script>
+    // Fungsi menampilkan pemberitahuan toast peringatan
     function showWarningToast(message) {
         let toast = document.getElementById('warning-toast');
         if (!toast) {
@@ -251,19 +254,18 @@
         
         toast.innerText = message;
         
-        // Show the toast
         setTimeout(() => {
             toast.style.opacity = '1';
             toast.style.transform = 'translateY(0)';
         }, 10);
         
-        // Hide the toast after 3 seconds
         setTimeout(() => {
             toast.style.opacity = '0';
             toast.style.transform = 'translateY(20px)';
         }, 3000);
     }
 
+    // Fungsi pencetakan dokumen PDF laporan
     function downloadPDF() {
         const startDate = document.getElementById('start_date').value;
         const endDate = document.getElementById('end_date').value;
@@ -273,7 +275,6 @@
             return;
         }
 
-        // Check if url query params match current input values
         const urlParams = new URLSearchParams(window.location.search);
         const queryStart = urlParams.get('start_date');
         const queryEnd = urlParams.get('end_date');
@@ -284,16 +285,15 @@
         }
 
         const element = document.getElementById('pdf-template');
-        element.style.display = 'block'; // Tampilkan sementara
+        element.style.display = 'block';
         
-        // Buat elemen berada di luar layar tapi ter-render sempurna
         element.style.position = 'absolute';
         element.style.top = '0';
         element.style.left = '0';
         element.style.zIndex = '-9999';
 
         const opt = {
-            margin:       10, // Margin kertas 10mm
+            margin:       10,
             filename:     `Laporan_Penjualan_Koplink_Periode_${startDate}_s_d_${endDate}.pdf`,
             image:        { type: 'jpeg', quality: 1 },
             html2canvas:  { scale: 2, useCORS: true },
@@ -303,9 +303,10 @@
         const targetContent = document.getElementById('pdf-content-wrapper');
 
         html2pdf().set(opt).from(targetContent).save().then(() => {
-            element.style.display = 'none'; // Sembunyikan kembali
+            element.style.display = 'none';
             element.style.position = 'static';
         });
     }
 </script>
 @endsection
+

@@ -3,12 +3,12 @@
 @section('title', 'Manajemen Kategori')
 
 @section('content')
+{{-- Tombol Tambah Kategori Baru --}}
 <div style="margin-bottom: 1.5rem; display: flex; justify-content: flex-end;">
     <a href="{{ route('admin.categories.create') }}" class="btn">Tambah Kategori</a>
 </div>
 
-
-
+{{-- Tabel Daftar Kategori Produk --}}
 <div class="card">
     <table>
         <thead>
@@ -22,9 +22,12 @@
         <tbody>
             @forelse($categories as $category)
                 <tr>
+                    {{-- Nama Kategori --}}
                     <td data-label="Kategori" style="vertical-align: middle;">
                         <strong>{{ $category->name }}</strong>
                     </td>
+                    
+                    {{-- Lista Produk Terkait Dalam Kategori --}}
                     <td data-label="Daftar Produk" class="stack-on-mobile" style="vertical-align: middle; padding: 1rem 0;">
                         <div class="val-wrap" style="width: 100%;">
                             @if($category->products->isEmpty())
@@ -40,11 +43,15 @@
                             @endif
                         </div>
                     </td>
+
+                    {{-- Jumlah Total Produk --}}
                     <td data-label="Jumlah Produk" style="text-align: center; vertical-align: middle;">
                         <div class="val-wrap">
                             <span style="font-weight: 600;">{{ $category->products_count }}</span>
                         </div>
                     </td>
+
+                    {{-- Tombol Hapus Kategori --}}
                     <td data-label="Aksi" style="text-align: center; vertical-align: middle;">
                         <div class="val-wrap" style="grid-template-columns: 1fr;">
                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" class="delete-form" style="display: block;">
@@ -56,6 +63,7 @@
                     </td>
                 </tr>
             @empty
+                {{-- Tampilan Jika Belum Ada Data Kategori --}}
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 2rem; color: #94a3b8; font-style: italic;">
                         Belum ada data kategori yang ditambahkan.
@@ -66,3 +74,4 @@
     </table>
 </div>
 @endsection
+

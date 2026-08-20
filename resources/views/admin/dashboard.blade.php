@@ -3,6 +3,7 @@
 @section('title', 'Dashboard Inventory')
 
 @section('content')
+{{-- Card Statistik Ringkasan Stok & Produk --}}
 <div class="stat-grid">
     <div class="card" style="margin-bottom: 0;">
         <h3 style="margin-top: 0; color: var(--secondary-accent); font-size: 0.9rem; text-transform: uppercase;">Total Produk</h3>
@@ -18,7 +19,9 @@
     </div>
 </div>
 
+{{-- Grid Peringatan Stok & Transaksi Terakhir --}}
 <div class="dashboard-grid">
+    {{-- Tabel Peringatan Stok Menipis --}}
     <div class="card">
         <h2 style="margin-top: 0; font-size: 1.25rem;">Stok Menipis (Di Bawah 10)</h2>
         @if($lowStockItems->count() > 0)
@@ -55,6 +58,7 @@
         @endif
     </div>
 
+    {{-- Widget 5 Riwayat Transaksi Mutasi Stok Terbaru --}}
     <div class="card">
         <h2 style="margin-top: 0; font-size: 1.25rem;">Transaksi Terakhir</h2>
         @if($recentTransactions->count() > 0)
@@ -81,3 +85,4 @@
     </div>
 </div>
 @endsection
+

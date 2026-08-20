@@ -3,7 +3,7 @@
 @section('title', 'Riwayat Stok')
 
 @section('content')
-
+{{-- Tabel Riwayat Mutasi Stok (Barang Masuk / Keluar) --}}
 <div class="card">
     <table>
         <thead>
@@ -17,6 +17,7 @@
         <tbody>
             @forelse($transactions as $t)
             <tr>
+                {{-- Nama Produk & Thumbnail --}}
                 <td data-label="Produk">
                     <div style="display: flex; align-items: center; gap: 10px;">
                         @if($t->product && $t->product->image)
@@ -27,7 +28,11 @@
                         <span>{{ $t->product->name ?? 'Produk Terhapus' }}</span>
                     </div>
                 </td>
+                
+                {{-- Waktu Transaksi --}}
                 <td data-label="Waktu"><div class="val-wrap"><span>{{ $t->created_at->format('d M Y H:i') }}</span></div></td>
+                
+                {{-- Jumlah Mutasi Stok (+ / -) --}}
                 <td data-label="Jumlah" style="text-align: center;">
                     <div class="val-wrap">
                         <strong style="font-size: 1.1rem; color: {{ $t->type == 'in' ? 'var(--text-color)' : 'var(--secondary-accent)' }};">
@@ -35,6 +40,8 @@
                         </strong>
                     </div>
                 </td>
+
+                {{-- Catatan Transaksi --}}
                 <td data-label="Catatan">
                     <div class="val-wrap">
                         <span style="color: var(--secondary-accent);">{{ $t->note ?: '-' }}</span>
@@ -42,6 +49,7 @@
                 </td>
             </tr>
             @empty
+            {{-- State Jika Belum Ada Riwayat --}}
             <tr>
                 <td colspan="4" style="text-align: center; color: var(--secondary-accent); padding: 2rem 0;">Belum ada riwayat pergerakan stok.</td>
             </tr>
@@ -50,3 +58,4 @@
     </table>
 </div>
 @endsection
+

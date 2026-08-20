@@ -3,18 +3,22 @@
 @section('title', 'Tambah Produk')
 
 @section('content')
+{{-- Tombol Navigasi Kembali --}}
 <div style="margin-bottom: 1.5rem; display: flex; justify-content: flex-end;">
     <a href="{{ route('admin.products.index') }}" class="btn" style="background:#333333; color:#ffffff; border:none;">Kembali</a>
 </div>
 
+{{-- Form Tambah Produk Baru --}}
 <div class="card" style="max-width: 600px;">
     <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        {{-- Input Nama Produk --}}
         <div class="form-group">
             <label>Nama Produk</label>
             <input type="text" name="name" class="form-control" required>
         </div>
         
+        {{-- Pilihan Kategori --}}
         <div class="form-group">
             <label>Kategori</label>
             <select name="category_id" class="form-control" required>
@@ -25,6 +29,7 @@
             </select>
         </div>
 
+        {{-- Input Harga Modal & Harga Jual --}}
         <div class="form-row">
             <div class="form-group">
                 <label>Harga Modal (Beli)</label>
@@ -36,22 +41,27 @@
             </div>
         </div>
 
+        {{-- Input Stok Awal --}}
         <div class="form-group">
             <label>Stok Awal</label>
             <input type="number" name="stock" class="form-control" value="0" required min="0">
         </div>
 
+        {{-- Upload Foto Produk --}}
         <div class="form-group">
             <label>Foto Produk (Opsional)</label>
             <input type="file" name="image" class="form-control" accept="image/*">
         </div>
 
+        {{-- Deskripsi Produk --}}
         <div class="form-group">
             <label>Deskripsi (Opsional)</label>
             <textarea name="description" class="form-control" rows="3"></textarea>
         </div>
 
+        {{-- Tombol Submit Simpan --}}
         <button type="submit" class="btn">Simpan Produk</button>
     </form>
 </div>
 @endsection
+

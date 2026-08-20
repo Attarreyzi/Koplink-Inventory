@@ -3,10 +3,12 @@
 @section('title', 'Manajemen Produk')
 
 @section('content')
+{{-- Tombol Tambah Produk --}}
 <div style="margin-bottom: 1.5rem; display: flex; justify-content: flex-end;">
     <a href="{{ route('admin.products.create') }}" class="btn">Tambah Produk</a>
 </div>
 
+{{-- Tabel Daftar Produk Koplink --}}
 <div class="card">
     <table>
         <thead>
@@ -22,6 +24,7 @@
         <tbody>
             @forelse($products as $p)
             <tr>
+                {{-- Detail Info Produk & Foto --}}
                 <td data-label="Produk">
                     <div style="display: flex; align-items: center; gap: 12px;">
                         @if($p->image)
@@ -38,6 +41,8 @@
                 <td data-label="Kategori"><div class="val-wrap"><span>{{ $p->category->name ?? '-' }}</span></div></td>
                 <td data-label="Harga Modal"><div class="val-wrap"><span>Rp {{ number_format($p->purchase_price, 0, ',', '.') }}</span></div></td>
                 <td data-label="Harga Jual"><div class="val-wrap"><span>Rp {{ number_format($p->price, 0, ',', '.') }}</span></div></td>
+                
+                {{-- Jumlah Stok & Tombol Mutasi Stok (IN/OUT) --}}
                 <td data-label="Stok" class="stok-cell">
                     <div class="stok-number val-wrap">
                         <span style="font-size: 1.2rem; font-weight: 800;">{{ $p->stock }}</span>
@@ -47,6 +52,8 @@
                         <a href="{{ route('admin.stock.form', [$p->id, 'out']) }}" style="color:#000000; font-size:0.75rem; text-decoration:none; background:#e5e5e5; padding:4px 10px; border-radius:6px; font-weight:700; white-space:nowrap;">- OUT</a>
                     </div>
                 </td>
+
+                {{-- Tombol Aksi Edit & Hapus --}}
                 <td data-label="Aksi">
                     <div class="val-wrap">
                         <a href="{{ route('admin.products.edit', $p->id) }}" class="btn btn-sm" style="background:transparent; border: 1px solid var(--border-color); color:var(--text-color); padding: 0.6rem 1rem;">Edit</a>
@@ -58,6 +65,7 @@
                 </td>
             </tr>
             @empty
+            {{-- State Jika Produk Kosong --}}
             <tr>
                 <td colspan="6" style="text-align: center; color: var(--secondary-accent); padding: 2rem 0;">Belum ada produk.</td>
             </tr>
@@ -66,3 +74,4 @@
     </table>
 </div>
 @endsection
+
