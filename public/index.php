@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -8,16 +9,16 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-// Determine if the application is in maintenance mode...
+// Cek mode maintenance
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
 }
 
 try {
-    // Register the Composer autoloader...
+    // Autoload Composer
     require __DIR__.'/../vendor/autoload.php';
 
-    // Bootstrap Laravel and handle the request...
+    // Inisialisasi aplikasi Laravel
     /** @var Application $app */
     $app = require_once __DIR__.'/../bootstrap/app.php';
 
@@ -27,3 +28,4 @@ try {
     echo "<b>Pesan:</b> " . $e->getMessage() . "<br><br>";
     echo "<b>Lokasi:</b> " . $e->getFile() . " (Baris " . $e->getLine() . ")<br>";
 }
+
